@@ -50,6 +50,11 @@ static void dump(double value, string &out) {
         char buf[32];
         snprintf(buf, sizeof buf, "%.17g", value);
         out += buf;
+    } if (std::isinf(value)) {
+        // Note: Number.MAX_VALUE is 1.7976931348623157e+308 in JS. So a JS
+        // engine will parse any larger numeric value into Inf, which we want.
+        // See t8143128 for more details.
+        out += "1.797693134862316e+308";
     } else {
         out += "null";
     }
