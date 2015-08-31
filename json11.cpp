@@ -126,7 +126,7 @@ static void dump(const Json::object &values, string &out) {
         if (!first)
             out += ",";
         dump(kv.first, out);
-        out += ": ";
+        out += ":";
         kv.second.dump(out);
         first = false;
     }
